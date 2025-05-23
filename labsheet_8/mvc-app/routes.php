@@ -1,7 +1,9 @@
 <?php
-require_once 'app/controllers/MahasiswaController.php';
+require_once __DIR__ . '../app/controllers/MahasiswaController.php';
+
+$action = isset($_GET['action']) ? $_GET['action'] : 'index';
 $controller = new MahasiswaController();
-$action = $_GET['action'] ?? 'index';
+
 switch ($action) {
     case 'index':
         $controller->index();
@@ -13,15 +15,18 @@ switch ($action) {
         $controller->store();
         break;
     case 'edit':
-        $controller->edit($_GET['id']);
+        $id = $_GET['id'];
+        $controller->edit($id);
         break;
     case 'update':
-        $controller->update($_GET['id']);
+        $id = $_GET['id'];
+        $controller->update($id);
         break;
     case 'delete':
-        $controller->delete($_GET['id']);
+        $id = $_GET['id'];
+        $controller->delete($id);
         break;
     default:
-        echo "404 Not Found";
+        $controller->index();
         break;
 }

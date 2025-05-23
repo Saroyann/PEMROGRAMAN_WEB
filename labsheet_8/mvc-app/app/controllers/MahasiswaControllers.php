@@ -13,17 +13,17 @@ class MahasiswaController
     public function index()
     {
         $data = $this->repo->getAll();
-        require __DIR__ . '/../views/mahasiswa/index.php';
+        require __DIR__ . '../views/mahasiswa/index.php';
     }
     public function create()
     {
-        require __DIR__ . '/../views/mahasiswa/create.php';
+        require __DIR__ . '../views/mahasiswa/create.php';
     }
     
     public function edit($id)
     {
         $mhs = $this->repo->findById($id);
-        require __DIR__ . '/../views/mahasiswa/edit.php';
+        require __DIR__ . '../views/mahasiswa/edit.php';
     }
 
 public function store()
@@ -34,7 +34,7 @@ public function store()
 
     $this->repo->insert($nim, $nama, $prodi);
 
-    header("Location: /?action=index");
+    header("Location: /labsheet_8/mvc-app/public/index.php");
 }
 
 public function update($id)
@@ -45,11 +45,11 @@ public function update($id)
 
     $this->repo->update($id, $nim, $nama, $prodi);
 
-    header("Location: /?action=index");
+    header("Location: /labsheet_8/mvc-app/public/index.php");
 }
     public function delete($id)
     {
         $this->repo->delete($id);
-        header("Location: /?action=index");
+        header("Location: /labsheet_8/mvc-app/public/index.php");
     }
 }
